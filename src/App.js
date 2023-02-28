@@ -31,7 +31,7 @@ function App() {
               //   sizes={obj.sizes}
               //   types={obj.types}
               // />
-              <PizzaBlock {...obj}/>
+              <PizzaBlock key={obj.id} {...obj}/>
             ))}
           </div>
         </div>
