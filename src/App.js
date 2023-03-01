@@ -5,13 +5,20 @@ import Categories from './components/Categories'
 import Sort from './components/Sort'
 import PizzaBlock from './components/PizzaBlock'
 
-import pizzas from './assets/pizzas.json'
-
 import './scss/app.scss'
 
 
-
 function App() {
+  const [items, setItems] = React.useState([])
+
+
+
+  React.useEffect(() => {
+    fetch('http://localhost:3001/pizzas')
+      .then((res) => res.json())
+      .then((arr) => setItems(arr))
+  }, [])
+
   return (
     <div className="wrapper">
       <Header/>
@@ -23,7 +30,7 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {pizzas.map(obj => (
+            {items.map(obj => (
               // <PizzaBlock
               //   title={obj.title}
               //   price={obj.price}
